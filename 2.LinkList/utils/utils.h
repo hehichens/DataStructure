@@ -40,6 +40,9 @@ bool ListDelete(LinkList L, int i, int *e);
 //print data
 bool PrintList(LinkList L);
 
+//print data if link has not head
+bool ShowList(LinkList L);
+
 //wheater list is empty
 bool Empty(LinkList L);
 

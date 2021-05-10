@@ -84,6 +84,16 @@ bool PrintList(LinkList L){
     return true;
 }
 
+//print data if link has not head
+bool ShowList(LinkList L){
+    LNode *p = L;
+    while(p){
+        printf("%d ", p->data);
+        p = p->next;
+    }
+    printf("\n");
+    return true;
+}
 
 //wheater list is empty
 bool Empty(LinkList L){
@@ -94,7 +104,6 @@ bool Empty(LinkList L){
 // clear all the data
 bool ClearList(LinkList *L){
     LNode *p, *q;
-    if(!L) return false;
 
     p = (*L)->next;
     while(p){
