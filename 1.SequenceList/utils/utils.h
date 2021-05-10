@@ -8,7 +8,7 @@ edit by hichens
 #define ElemType int
 #define MaxSize 50
 #define InitSize 100
-#define bool int
+#define bool short
 #define true 1
 #define false 0
 
