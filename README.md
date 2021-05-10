@@ -1,7 +1,7 @@
 ## Data Structure
 
 - [1.顺序表](./1.SequenceList)
-- 2.链表
+- [2.链表](./LinkList)
 - 3.栈
 - 4.队列
 - 5.串
