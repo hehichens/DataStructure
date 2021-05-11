@@ -3,6 +3,9 @@ utils
 edit by hichens
 */
 
+#ifndef __SEQUENCELIST__UTILS__C__
+#define __SEQUENCELIST__UTILS__C__
+
 #include<stdlib.h>
 #include<stdio.h>
 #define ElemType int
@@ -65,3 +68,6 @@ bool DestroyList(SqList *L);
 /*other function*/
 //swap function
 bool swap(ElemType *e1, ElemType *e2);
+
+
+#endif
