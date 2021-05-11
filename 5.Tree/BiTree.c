@@ -6,25 +6,10 @@
 #include "./utils/utils.c"
 
 
-    /* Read data from file with fscanf */
-    // FILE *fp;
-    // char ch;
-    // fp = fopen("data.txt", "r");
-    // if(fp == NULL){
-    //     printf("No Such File!");
-    //     return 0;
-    // }
-
-    // while(fscanf(fp, "%c", &ch)==1){
-    //     printf("%c ", ch);
-    // }
-    // printf("\n");
-
 int main(){
     FILE *fp;
     BiTree T;
-    fp = fopen("data.txt", "r");
-    // data： ABDG^^^EH^^I^^CF^J^^^
+    fp = fopen("data1.txt", "r");
     InitBiTree(&T);
     CreateBiTree(fp, &T);
 

@@ -15,16 +15,17 @@ BiTree Pre_In_Create(ElemType *A, ElemType *B, int s1, int l1, int s2, int l2){
     BiNode *T = (BiNode *)malloc(sizeof(BiNode));
     int i;
     T->data = A[s1];
-    printf("%c \n", T->data);
+    // printf("%c \n", T->data);
     for(i = s2; B[i] != T->data; ++i);
     int lenL = i - s2;
     int lenR = l2 - i;
+
     if(lenL)
         T->lchild = Pre_In_Create(A, B, s1+1, s1+lenL, s2, s2+lenL-1);
     else
         T->lchild = NULL;
     if(lenR)
-        T->rchild = Pre_In_Create(A, B, l1-lenR+1, l1-1, l2-lenR+1, l2-1);
+        T->rchild = Pre_In_Create(A, B, l1-lenR+1, l1, l2-lenR+1, l2);
     else
         T->rchild = NULL;
     return T;
@@ -32,10 +33,12 @@ BiTree Pre_In_Create(ElemType *A, ElemType *B, int s1, int l1, int s2, int l2){
 
 
 int main(){
-    ElemType A[] = {'A', 'B', 'C', 'D', 'B', 'F', 'G', 'H', 'I'};
-    ElemType B[] = {'B', 'C', 'A', 'E', 'D', 'G', 'H', 'F', 'I'};
+    // A B D G E H I C F J 
+    // G D B H E I A F J C 
+    ElemType A[] = {'A', 'B', 'D', 'G', 'E', 'H', 'I', 'C', 'F', 'J'};
+    ElemType B[] = {'G', 'D', 'B', 'H', 'E', 'I', 'A', 'F', 'J', 'C'};
 
-    BiTree T = Pre_In_Create(A, B, 0, 8, 0, 8);
+    BiTree T = Pre_In_Create(A, B, 0, 9, 0, 9);
     printf("===Tree Overall===\n");
     PrintTree(T);
     printf("==================\n");
