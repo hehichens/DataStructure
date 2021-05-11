@@ -3,6 +3,9 @@ utils
 edit by hichens
 */
 
+#ifndef __LINKLIST__UTILS__C__
+#define __LINKLIST__UTILS__C__
+
 #include<stdlib.h>
 #include<stdio.h>
 #define ElemType int
@@ -51,3 +54,6 @@ bool ClearList(LinkList *L);
 
 //destroy the link list
 bool DestroyList(LinkList *L);
+
+
+#endif
