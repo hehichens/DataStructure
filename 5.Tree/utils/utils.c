@@ -1,5 +1,7 @@
 /*
-
+- BiTree
+- Stack
+- Queue
 */
 
 #include<stdio.h>
@@ -37,13 +39,11 @@ int BiTreeLength(BiTree T);
 
 //Depth
 int BiTreeDepth(BiTree T){
-    int LD, RD;
-    if(!T) return 0;
-    else{
-        LD = BiTreeDepth(T->lchild);
-        RD = BiTreeDepth(T->rchild);
-        return (LD>=RD?LD:RD)+1;
-    }
+    if(!T) 
+        return 0;
+    int LD = BiTreeDepth(T->lchild);
+    int RD = BiTreeDepth(T->rchild);
+    return (LD>=RD?LD:RD)+1;
 }
 
 
@@ -95,11 +95,6 @@ bool PrintTree(BiTree T)
 } 
 
 
-BiNode *LocationBiTree(BiTree T, BiNode e){
-    return ;
-}
-
-
 //PreOrder
 void PreOrder(BiTree T){
     if(!T) return ;
@@ -110,23 +105,88 @@ void PreOrder(BiTree T){
     }
 }
 
+
+//PreOrder with stack
+void PreOrder2(BiTree T){
+    Stack S;
+    InitStack(&S);
+    BiTree p = T;
+    while(p || !StackEmpty(S)){
+        if(p){
+            printf("%c ", p->data);
+            Push(&S, p);
+            p = p->lchild;
+        }
+        else{
+            Pop(&S, &p);
+            p = p->rchild;
+        }
+    }
+}
+
+
 //InOrder
 void InOrder(BiTree T){
     if(!T) return ;
     else{
-        PreOrder(T->lchild);
+        InOrder(T->lchild);
         printf("%c ", T->data);
-        PreOrder(T->rchild);
+        InOrder(T->rchild);
     }
 }
+
+
+//InOrder with stack
+void InOrder2(BiTree T){
+    Stack S;
+    InitStack(&S);
+    BiTree p = T;
+    while(p || !StackEmpty(S)){
+        if(p){
+            Push(&S, p);
+            p = p->lchild;
+        }
+        else{
+            Pop(&S, &p);
+            printf("%c ", p->data);
+            p = p->rchild;
+        }
+    }
+}
+
 
 //PostOrder
 void PostOrder(BiTree T){
     if(!T) return ;
     else{
-        PreOrder(T->lchild);
-        PreOrder(T->rchild);
+        PostOrder(T->lchild);
+        PostOrder(T->rchild);
         printf("%c ", T->data);
+    }
+}
+
+
+//PostOrder with stack
+void PostOrder2(BiTree T){
+    Stack S;
+    InitStack(&S);
+    BiTree p = T, r=NULL;
+    while(p || !StackEmpty(S)){
+        if(p){
+            Push(&S, p);
+            p = p->lchild;
+        }
+        else{
+            GetTop(S, &p);
+            if(p->rchild && p->rchild != r)
+                p = p->rchild;
+            else{
+                Pop(&S, &p);
+                printf("%c ", p->data);
+                r = p;
+                p = NULL;
+            }
+        }
     }
 }
 
@@ -134,8 +194,8 @@ void PostOrder(BiTree T){
 void LevelOrder(BiTree T){
     Queue Q;
     InitQueue(&Q);
-    BiNode *p;
-    EnQueue(&Q, &T);
+    BiTree p;
+    EnQueue(&Q, T);
     while(!QueueEmpty(Q)){
         DeQueue(&Q, &p);
         printf("%c ", p->data);
@@ -160,7 +220,7 @@ bool StackEmpty(Stack S){
 
 
 //Push
-bool Push(Stack *S, BiNode x){
+bool Push(Stack *S, BiTree x){
     if(S->top == MaxSize) 
         return false;
     S->data[++S->top] = x;
@@ -169,7 +229,7 @@ bool Push(Stack *S, BiNode x){
 
 
 //Pop
-bool Pop(Stack *S, BiNode *x){
+bool Pop(Stack *S, BiTree *x){
     if(S->top == -1)
         return false;
     *x = S->data[S->top--];
@@ -178,7 +238,7 @@ bool Pop(Stack *S, BiNode *x){
 
 
 //Get top data
-bool GetTop(Stack S, BiNode *x){
+bool GetTop(Stack S, BiTree *x){
     if(S.top == -1)
         return false;
     *x = S.data[S.top];
@@ -216,7 +276,7 @@ bool QueueFull(Queue Q){
 
 
 //EnQueue
-bool EnQueue(Queue *Q, BiNode *x){
+bool EnQueue(Queue *Q, BiTree x){
     if(QueueFull(*Q))
         return false;
     Q->data[Q->rear] = x;
@@ -226,7 +286,7 @@ bool EnQueue(Queue *Q, BiNode *x){
 
 
 //DeQueue
-bool DeQueue(Queue *Q, BiNode *x){
+bool DeQueue(Queue *Q, BiTree *x){
     if(QueueEmpty(*Q))
         return false;
     *x = Q->data[Q->front];

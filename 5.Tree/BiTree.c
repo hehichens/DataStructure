@@ -28,26 +28,37 @@ int main(){
     InitBiTree(&T);
     CreateBiTree(fp, &T);
 
-    printf("%c\n", T->data);
-    printf("%c\n", T->lchild->data);
-    printf("%c\n", T->rchild->data);
-
     int depth = BiTreeDepth(T);
-    printf("Depth=%d\n", depth);
 
+    printf("====================Tree Overall======================\n");
+    PrintTree(T);
+    printf("\nDepth=%d\n\n", depth);
+
+    printf("================4 ways to travel trees==================\n");
+
+    printf("PreOder==>");
     PreOrder(T);
     printf("\n");
+    printf("PreOder2==>");
+    PreOrder2(T);
+    printf("\n\n");
 
+    printf("InOrder==>");
     InOrder(T);
     printf("\n");
+    printf("InOrder2==>");
+    InOrder2(T);
+    printf("\n\n");
 
+    printf("PostOrder==>");
     PostOrder(T);
     printf("\n");
+    printf("PostOrder2==>");
+    PostOrder2(T);
+    printf("\n\n");
 
+    printf("LevelOrder==>");
     LevelOrder(T);
-    printf("\n");
-
-    PrintTree(T);
-
+    printf("\n\n");
     return 0;
 }

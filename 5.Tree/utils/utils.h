@@ -1,5 +1,7 @@
 /*
-
+- BiTree
+- Stack
+- Queue
 */
 
 #ifndef __TREE_UTILS__C__
@@ -33,7 +35,7 @@ int BiTreeLength(BiTree T);
 int BiTreeDepth(BiTree T);
 
 //Locate node
-BiNode *LocationBiTree(BiTree T, ElemType e);
+BiNode *LocationBiTree(BiTree T, BiNode e);
 
 //insert node
 bool PrintTree(BiTree T);
@@ -41,11 +43,20 @@ bool PrintTree(BiTree T);
 //PreOrder
 void PreOrder(BiTree T);
 
+//PreOrder with stack
+void PreOrder2(BiTree T);
+
 //InOrder
 void InOrder(BiTree T);
 
+//InOrder with stack
+void InOrder2(BiTree T);
+
 //PostOrder
 void PostOrder(BiTree T);
+
+//PostOrder with stack
+void PostOrder2(BiTree T);
 
 //LevelOrder
 void LevelOrder(BiTree T);
@@ -53,7 +64,7 @@ void LevelOrder(BiTree T);
 
 /*Stack*/
 typedef struct{
-    BiNode data[MaxSize];
+    BiTree data[MaxSize];
     int top;
 }Stack;
 
@@ -64,21 +75,21 @@ void InitStack(Stack *S);
 bool StackEmpty(Stack S);
 
 //Push
-bool Push(Stack *S, BiNode x);
+bool Push(Stack *S, BiTree x);
 
 
 //Pop
-bool Pop(Stack *S, BiNode *x);
+bool Pop(Stack *S, BiTree *x);
 
 //Get top data
-bool GetTop(Stack S, BiNode *x);
+bool GetTop(Stack S, BiTree *x);
 
 
 
 
 /*Queue*/
 typedef struct{
-    BiNode data[MaxSize];
+    BiTree data[MaxSize];
     int front, rear;
 }Queue;
 
@@ -92,10 +103,10 @@ bool QueueEmpty(Queue Q);
 bool QueueFull(Queue Q);
 
 //EnQueue
-bool EnQueue(Queue *Q, BiNode x);
+bool EnQueue(Queue *Q, BiTree x);
 
 //DeQueue
-bool DeQueue(Queue *Q, BiNode *x);
+bool DeQueue(Queue *Q, BiTree *x);
 
 
 #endif
