@@ -1,0 +1,5 @@
+3
+5
+6
+A,B,C,D,E
+AB1,AC3,AE5,BC2,CD4,DE6
