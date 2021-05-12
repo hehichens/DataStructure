@@ -8,6 +8,7 @@
 #include "./utils/utils.c"
 
 
+//Method 1
 BiTree Pre_K(BiTree T, int k){
     Stack S; InitStack(&S);
     BiTree p = T;
@@ -28,6 +29,23 @@ BiTree Pre_K(BiTree T, int k){
 }
 
 
+// Method 2
+int i = 1;
+ElemType Pre_K_2(BiTree T, int k){
+    if(!T) 
+        return '#';
+    if(i == k)
+        return T->data;
+
+    char ch;
+    i++;
+    ch = Pre_K_2(T->lchild, k);
+    if(ch != '#') return ch;
+    ch = Pre_K_2(T->rchild, k);
+    return ch;
+}
+
+
 int main(){
     FILE *fp;
     BiTree T;
@@ -38,8 +56,12 @@ int main(){
     PreOrder2(T);
     printf("\n");
 
-    int k = 3;
+    int k = 4;
+
     BiTree Node = Pre_K(T, k);
     printf("Node %d==>%c\n", k, Node->data);
+
+    char ch = Pre_K_2(T, k);
+    printf("Node %d==>%c\n", k, ch);
     return 0;
 }

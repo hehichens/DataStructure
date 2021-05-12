@@ -33,10 +33,8 @@ BiTree Pre_In_Create(ElemType *A, ElemType *B, int s1, int l1, int s2, int l2){
 
 
 int main(){
-    // A B D G E H I C F J 
-    // G D B H E I A F J C 
-    ElemType A[] = {'A', 'B', 'D', 'G', 'E', 'H', 'I', 'C', 'F', 'J'};
-    ElemType B[] = {'G', 'D', 'B', 'H', 'E', 'I', 'A', 'F', 'J', 'C'};
+    ElemType *A = "ABDGEHICFJ";
+    ElemType *B = "GDBHEIAFJC";
 
     BiTree T = Pre_In_Create(A, B, 0, 9, 0, 9);
     printf("===Tree Overall===\n");
