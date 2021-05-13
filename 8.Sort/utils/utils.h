@@ -42,7 +42,7 @@ void SelectSort(Elemtype *A, int n);
 
 void HeapSort(Elemtype *A, int n);
 void BuildMaxHeap(Elemtype *A, int n);
-void HeadAdjust(Elemtype *A, int k, int n);
+void HeapAdjust(Elemtype *A, int k, int n);
 
 
 
@@ -59,5 +59,9 @@ void CountingSort(Elemtype *A, int n);
 
 /*Utils Function*/
 void Swap(Elemtype *m, Elemtype *n);
+
+void PrintList(Elemtype *A, int n);
+
+void CopyList(Elemtype *A, Elemtype *B, int n);
 
 #endif
